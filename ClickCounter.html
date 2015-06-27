@@ -1,0 +1,33 @@
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<script type="text/jsx">
+			var ClickCounter = React.createClass({
+				getInitialState: function () {
+					return {timesClicked: 0};
+				},
+				checkClickNumenber: function () {
+					if(this.state.timesClicked >= 5){
+						this.setState({
+							timesClicked: 0
+						});
+					}
+				},
+				handleClick: function () {
+					this.setState({
+						timesClicked: this.state.timesClicked + 1
+					});
+					this.checkClickNumenber();
+				},
+				render: function () {
+					return <div onClick={this.handleClick}>{this.state.timesClicked}</div>;
+				}
+			});
+			React.render(<ClickCounter />, document.body);
+		</script>
+		<script src="https://fb.me/react-0.13.3.min.js"></script>
+		<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+	</body>
+</html>
